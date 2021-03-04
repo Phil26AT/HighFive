@@ -32,10 +32,10 @@ option(HIGHFIVE_USE_BOOST "Enable Boost Support" ${USE_BOOST})
 option(HIGHFIVE_USE_EIGEN "Enable Eigen testing" ${USE_EIGEN})
 option(HIGHFIVE_USE_XTENSOR "Enable xtensor testing" ${USE_XTENSOR})
 option(HIGHFIVE_USE_OPENCV "Enable OpenCV testing" ${USE_OPENCV})
-option(HIGHFIVE_UNIT_TESTS "Enable unit tests" ON)
-option(HIGHFIVE_EXAMPLES "Compile examples" ON)
+option(HIGHFIVE_UNIT_TESTS "Enable unit tests" OFF)
+option(HIGHFIVE_EXAMPLES "Compile examples" OFF)
 option(HIGHFIVE_PARALLEL_HDF5 "Enable Parallel HDF5 support" OFF)
-option(HIGHFIVE_BUILD_DOCS "Enable documentation building" ON)
+option(HIGHFIVE_BUILD_DOCS "Enable documentation building" OFF)
 
 # In deplomyents we probably don't want/cant have dynamic dependencies
 option(HIGHFIVE_USE_INSTALL_DEPS "End applications by default use detected dependencies here" OFF)

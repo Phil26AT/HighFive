@@ -16,6 +16,7 @@
 #include <H5Ppublic.h>
 #include <H5Tpublic.h>
 
+#include "half.hpp"
 
 namespace HighFive {
 
@@ -133,6 +134,14 @@ inline AtomicType<float>::AtomicType() {
 }
 
 template <>
+inline AtomicType<half>::AtomicType() {
+    _hid = H5Tcopy(H5T_NATIVE_FLOAT);
+    H5Tset_fields(_hid, 15, 10, 5, 0, 10);
+    H5Tset_size(_hid, 2);
+    H5Tset_ebias(_hid, 15);
+}
+
+template <>
 inline AtomicType<double>::AtomicType() {
     _hid = H5Tcopy(H5T_NATIVE_DOUBLE);
 }
@@ -181,7 +190,7 @@ template <typename T>
 AtomicType<T>::AtomicType() {
     static_assert(details::inspector<T>::recursive_ndim == 0,
                   "Atomic types cant be arrays, except for char[] (fixed-len strings)");
-    static_assert(details::inspector<T>::recursive_ndim > 0, "Type not supported");
+    // static_assert(details::inspector<T>::recursive_ndim > 0, "Type not supported");
 }
 
 
